@@ -6,10 +6,10 @@
         .module('simpleArmoryApp')
         .controller('HeaderCtrl' , HeaderCtrl);
 
-    function HeaderCtrl($scope, $location) {
-     
+    function HeaderCtrl($scope, $location, SettingsService) {
+
         $scope.isCollapsed = true;
-        
+
         $scope.getUrl = function(subSite) {
             var url = '#' + getBaseUrl($scope.character);
             if (subSite !== '') {
@@ -22,7 +22,7 @@
         $scope.isActive = function (viewLocation, subMenu) {
 
             // if its a submenu search, then just look for the location in the url
-            // and call it good      
+            // and call it good
             if (subMenu) {
                 return $location.path().indexOf(viewLocation) > 0;
             }
@@ -31,9 +31,19 @@
             var combinedUrl = getBaseUrl($scope.character);
             if (viewLocation !== '') {
                 combinedUrl += '/' + viewLocation;
-            } 
+            }
 
             return $location.path() === combinedUrl;
+        };
+
+        $scope.language = SettingsService.locale.language;
+
+        $scope.setLanguage = function(lang) {
+            SettingsService.locale.setLanguage(lang);
+        };
+
+        $scope.isCurrentLanguage = function(lang) {
+            return lang == SettingsService.locale.language;
         };
 
         $scope.guildName = function() {
@@ -50,26 +60,26 @@
                 return window.location.protocol + '//' + c.region + '.battle.net/static-render/' + c.region + '/' + c.thumbnail;
             }
 
-            return '';   
+            return '';
         };
 
         $scope.armoryUrl = function() {
             if ($scope.character) {
                 var c = $scope.character;
-                return window.location.protocol + '//' + 
+                return window.location.protocol + '//' +
                        c.region + '.battle.net/wow/en/character/' + c.realm + '/' + c.name.toLowerCase() + '/advanced';
             }
 
-            return '#';   
+            return '#';
         };
 
-        function getBaseUrl(character) {    
+        function getBaseUrl(character) {
             if (!character) {
                 return '';
             }
 
-            return '/' + character.region.toLowerCase() + '/' + 
-                   character.realm.toLowerCase()  + '/' + 
+            return '/' + character.region.toLowerCase() + '/' +
+                   character.realm.toLowerCase()  + '/' +
                    character.name.toLowerCase();
         }
     }

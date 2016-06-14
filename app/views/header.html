@@ -27,7 +27,7 @@
             <li ng-class="{ active: isActive('achievements/events') }"><a ng-click="isCollapsed = true" ng-href="{{getUrl('achievements/events')}}">World Events</a></li>
             <li ng-class="{ active: isActive('achievements/pets') }"><a ng-click="isCollapsed = true" ng-href="{{getUrl('achievements/pets')}}">Pet Battles</a></li>
             <li ng-class="{ active: isActive('achievements/collections') }"><a ng-click="isCollapsed = true" ng-href="{{getUrl('achievements/collections')}}">Collections</a></li>
-            <li ng-class="{ active: isActive('achievements/garrisons') }"><a ng-click="isCollapsed = true" ng-href="{{getUrl('achievements/garrisons')}}">Garrisons</a></li>            
+            <li ng-class="{ active: isActive('achievements/garrisons') }"><a ng-click="isCollapsed = true" ng-href="{{getUrl('achievements/garrisons')}}">Garrisons</a></li>
             <li ng-class="{ active: isActive('achievements/legacy') }"><a ng-click="isCollapsed = true" ng-href="{{getUrl('achievements/legacy')}}">Legacy</a></li>
             <li ng-class="{ active: isActive('achievements/feats') }"><a ng-click="isCollapsed = true" ng-href="{{getUrl('achievements/feats')}}">Feats of Strength</a></li>
           </ul>
@@ -48,6 +48,16 @@
           <ul class="dropdown-menu">
             <li><a href="mailto:simplearmory@gmail.com?subject=Simple Armory Feedback">Contact</a></li>
             <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EQKUGCXWLES44" target="_blank">Beer Me</a></li>
+          </ul>
+        </li>
+        <li ng-class="{ active: false }" class="dropdown">
+          <a href="#" class="dropdown-toggle">Language <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li ng-class="{ active: isCurrentLanguage('en') }"><a href ng-click="setLanguage('en')">English</a></li>
+            <li ng-class="{ active: isCurrentLanguage('de') }"><a href ng-click="setLanguage('de')">Deutsch</a></li>
+            <li ng-class="{ active: isCurrentLanguage('ru') }"><a href ng-click="setLanguage('ru')">Русский</a></li>
+            <li ng-class="{ active: isCurrentLanguage('fr') }"><a href ng-click="setLanguage('fr')">Français</a></li>
+            <li ng-class="{ active: isCurrentLanguage('es') }"><a href ng-click="setLanguage('es')">Español</a></li>
           </ul>
         </li>
       </ul>
